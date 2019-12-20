@@ -1,3 +1,5 @@
+# XCP-ng: SRPM imported from https://cbs.centos.org/koji/packageinfo?packageID=99
+
 # Build -python subpackage
 %bcond_without python
 %if 0%{?fedora} || 0%{?rhel} > 7
@@ -15,7 +17,7 @@
 Summary:        Protocol Buffers - Google's data interchange format
 Name:           protobuf
 Version:        3.6.1
-Release:        4%{?dist}
+Release:        4.1%{?dist}
 License:        BSD
 URL:            https://github.com/protocolbuffers/protobuf
 Source:         https://github.com/protocolbuffers/protobuf/archive/v%{version}%{?rcver}/%{name}-%{version}%{?rcver}-all.tar.gz
@@ -379,6 +381,9 @@ install -p -m 0644 %{SOURCE2} %{buildroot}%{_emacs_sitestartdir}
 
 
 %changelog
+* Fri Dec 20 2019 Samuel Verschelde <stormi-xcp@ylix.fr> - 3.6.1-4.1
+- Rebuild for XCP-ng 8.1
+
 * Wed May 8 2019 Orion Poplawski <orion@nwra.com> - 3.6.1-4
 - Update emacs packaging to comply with guidelines
 
