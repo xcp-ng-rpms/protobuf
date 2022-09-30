@@ -17,7 +17,7 @@
 Summary:        Protocol Buffers - Google's data interchange format
 Name:           protobuf
 Version:        3.6.1
-Release:        4.2%{?dist}
+Release:        4.3%{?dist}
 License:        BSD
 URL:            https://github.com/protocolbuffers/protobuf
 Source:         https://github.com/protocolbuffers/protobuf/archive/v%{version}%{?rcver}/%{name}-%{version}%{?rcver}-all.tar.gz
@@ -381,6 +381,9 @@ install -p -m 0644 %{SOURCE2} %{buildroot}%{_emacs_sitestartdir}
 
 
 %changelog
+* Fri Sep 30 2022 Samuel Verschelde <stormi-xcp@ylix.fr> - 3.6.1-4.3
+- Rebuild for XCP-ng 8.3 alpha
+
 * Tue Jun 30 2020 Samuel Verschelde <stormi-xcp@ylix.fr> - 3.6.1-4.2
 - Rebuild for XCP-ng 8.2
 
