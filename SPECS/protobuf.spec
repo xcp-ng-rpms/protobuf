@@ -16,11 +16,11 @@
 
 Summary:        Protocol Buffers - Google's data interchange format
 Name:           protobuf
-Version:        3.6.1
-Release:        4.3%{?dist}
+Version:        3.17.3
+Release:        1%{?dist}
 License:        BSD
 URL:            https://github.com/protocolbuffers/protobuf
-Source:         https://github.com/protocolbuffers/protobuf/archive/v%{version}%{?rcver}/%{name}-%{version}%{?rcver}-all.tar.gz
+Source:         https://github.com/protocolbuffers/protobuf/archive/v%{version}%{?rcver}/%{name}-all-%{version}%{?rcver}.tar.gz
 Source1:        ftdetect-proto.vim
 Source2:        protobuf-init.el
 # For tests
@@ -308,13 +308,13 @@ install -p -m 0644 %{SOURCE2} %{buildroot}%{_emacs_sitestartdir}
 %files
 %doc CHANGES.txt CONTRIBUTORS.txt README.md
 %license LICENSE
-%{_libdir}/libprotobuf.so.17*
+%{_libdir}/libprotobuf.so.28*
 
 %files compiler
 %doc README.md
 %license LICENSE
 %{_bindir}/protoc
-%{_libdir}/libprotoc.so.17*
+%{_libdir}/libprotoc.so.28*
 %{_emacs_sitelispdir}/%{name}/
 %{_emacs_sitestartdir}/protobuf-init.el
 
@@ -331,7 +331,7 @@ install -p -m 0644 %{SOURCE2} %{buildroot}%{_emacs_sitestartdir}
 %{_libdir}/libprotoc.a
 
 %files lite
-%{_libdir}/libprotobuf-lite.so.17*
+%{_libdir}/libprotobuf-lite.so.28*
 
 %files lite-devel
 %{_libdir}/libprotobuf-lite.so
@@ -381,6 +381,9 @@ install -p -m 0644 %{SOURCE2} %{buildroot}%{_emacs_sitestartdir}
 
 
 %changelog
+* Mon Jun 03 2024 Thierry Escande <thierry.escande@vates.tech> - 3.17.3-1
+- Import protobuf cpp sources v3.17.3
+
 * Fri Sep 30 2022 Samuel Verschelde <stormi-xcp@ylix.fr> - 3.6.1-4.3
 - Rebuild for XCP-ng 8.3 alpha
 
