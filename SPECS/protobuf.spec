@@ -23,8 +23,9 @@ URL:            https://github.com/protocolbuffers/protobuf
 Source:         https://github.com/protocolbuffers/protobuf/archive/v%{version}%{?rcver}/%{name}-all-%{version}%{?rcver}.tar.gz
 Source1:        ftdetect-proto.vim
 Source2:        protobuf-init.el
-# For tests
-Source3:        https://github.com/google/googletest/archive/release-1.8.1.tar.gz#/googletest-1.8.1.tar.gz
+
+# XCP-ng specific patches
+Patch1000:      googletest-build-fix.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -199,9 +200,8 @@ Protocol Buffer Parent POM.
 %endif
 
 %prep
-%setup -q -n %{name}-%{version}%{?rcver} -a 3
+%setup -q -n %{name}-%{version}%{?rcver}
 %autopatch -p1
-mv googletest-release-1.8.1/* third_party/googletest/
 find -name \*.cc -o -name \*.h | xargs chmod -x
 chmod 644 examples/*
 %if %{with java}
@@ -383,6 +383,8 @@ install -p -m 0644 %{SOURCE2} %{buildroot}%{_emacs_sitestartdir}
 %changelog
 * Mon Jun 03 2024 Thierry Escande <thierry.escande@vates.tech> - 3.17.3-1
 - Import protobuf cpp sources v3.17.3
+- Remove googletest archive as it's now provided with protobuf sources
+- Add a patch to fix googletest Makefile.am files
 
 * Fri Sep 30 2022 Samuel Verschelde <stormi-xcp@ylix.fr> - 3.6.1-4.3
 - Rebuild for XCP-ng 8.3 alpha
