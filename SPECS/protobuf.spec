@@ -34,7 +34,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
-Requires:       emacs-filesystem >= %{_emacs_version}
 
 %description
 Protocol Buffers are a way of encoding structured data in an efficient
@@ -52,6 +51,7 @@ breaking deployed programs that are compiled against the "old" format.
 %package compiler
 Summary:        Protocol Buffers compiler
 Requires:       %{name} = %{version}-%{release}
+Requires:       emacs-filesystem >= %{_emacs_version}
 Obsoletes:      protobuf-emacs < 3.6.1-4
 Obsoletes:      protobuf-emacs-el < 3.6.1-4
 
