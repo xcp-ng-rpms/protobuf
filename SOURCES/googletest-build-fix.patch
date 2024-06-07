@@ -1,0 +1,46 @@
+diff --git a/third_party/googletest/googletest/Makefile.am b/third_party/googletest/googletest/Makefile.am
+index 00aa384d..758851b6 100644
+--- a/third_party/googletest/googletest/Makefile.am
++++ b/third_party/googletest/googletest/Makefile.am
+@@ -173,10 +173,13 @@ AM_CPPFLAGS = -I$(srcdir) -I$(srcdir)/include
+ if HAVE_PTHREADS
+   AM_CXXFLAGS = @PTHREAD_CFLAGS@ -DGTEST_HAS_PTHREAD=1
+   AM_LIBS = @PTHREAD_LIBS@
++  AM_LDFLAGS = @PTHREAD_LIBS@
+ else
+   AM_CXXFLAGS = -DGTEST_HAS_PTHREAD=0
+ endif
+ 
++AM_CXXFLAGS += -std=c++11
++
+ # Build rules for libraries.
+ lib_LTLIBRARIES = lib/libgtest.la lib/libgtest_main.la
+ 
+diff --git a/third_party/googletest/googlemock/Makefile.am b/third_party/googletest/googlemock/Makefile.am
+index 6a5651c2..85bd39f9 100644
+--- a/third_party/googletest/googlemock/Makefile.am
++++ b/third_party/googletest/googlemock/Makefile.am
+@@ -18,8 +18,14 @@ AM_CPPFLAGS = $(GTEST_CPPFLAGS) -I$(srcdir)/include
+ if HAVE_PTHREADS
+   AM_CXXFLAGS = @PTHREAD_CFLAGS@ -DGTEST_HAS_PTHREAD=1
+   AM_LIBS = @PTHREAD_LIBS@
++  AM_LDFLAGS = @PTHREAD_LIBS@
++else
++  AM_CXXFLAGS = -DGTEST_HAS_PTHREAD=0
++  AM_LDFLAGS =
+ endif
+ 
++AM_CXXFLAGS += -std=c++11
++
+ # Build rules for libraries.
+ lib_LTLIBRARIES = lib/libgmock.la lib/libgmock_main.la
+ 
+@@ -59,7 +65,7 @@ lib_libgmock_main_la_LIBADD = lib/libgmock.la
+ 
+ TESTS=
+ check_PROGRAMS=
+-AM_LDFLAGS = $(GTEST_LDFLAGS)
++AM_LDFLAGS += $(GTEST_LDFLAGS)
+ 
+ # This exercises all major components of Google Mock.  It also
+ # verifies that libgmock works.
